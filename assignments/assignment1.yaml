@@ -1,0 +1,64 @@
+- init:
+    run: rm -f assignment1
+    blocker: true
+
+- build:
+    run: gcc -std=c99 -Wall -Werror assignment1.c -o assignment1
+    blocker: true
+
+- case_player_1_wins:
+    run: ./assignment1
+    script:
+        - expect: "0-0\r\n"
+        - expect: "Point: "
+        - send: "1"
+        - expect: "15-0\r\n"
+        - expect: "Point: "
+        - send: "1"
+        - expect: "30-0\r\n"
+        - expect: "Point: "
+        - send: "1"
+        - expect: "40-0\r\n"
+        - expect: "Point: "
+        - send: "2"
+        - expect: "40-15\r\n"
+        - expect: "Point: "
+        - send: "1"
+        - expect: "GAME: PLAYER 1\r\n"
+    exit: 0
+
+- case_player_2_wins_after_deuce:
+    run: ./assignment1
+    script:
+        - expect: "0-0\r\n"
+        - expect: "Point: "
+        - send: "1"
+        - expect: "15-0\r\n"
+        - expect: "Point: "
+        - send: "2"
+        - expect: "15-15\r\n"
+        - expect: "Point: "
+        - send: "2"
+        - expect: "15-30\r\n"
+        - expect: "Point: "
+        - send: "2"
+        - expect: "15-40\r\n"
+        - expect: "Point: "
+        - send: "1"
+        - expect: "30-40\r\n"
+        - expect: "Point: "
+        - send: "1"
+        - expect: "DEUCE\r\n"
+        - expect: "Point: "
+        - send: "1"
+        - expect: "ADVANTAGE: PLAYER 1\r\n"
+        - expect: "Point: "
+        - send: "2"
+        - expect: "DEUCE\r\n"
+        - expect: "Point: "
+        - send: "2"
+        - expect: "ADVANTAGE: PLAYER 2\r\n"
+        - expect: "Point: "
+        - send: "2"
+        - expect: "GAME: PLAYER 2\r\n"
+    exit: 0

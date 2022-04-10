@@ -1,0 +1,62 @@
+- init:
+    run: rm -f fibonacci
+    blocker: true
+
+- build:
+    run: gcc -Wall -Werror fibonacci.c -o fibonacci
+    exit: 0
+    points: 10
+    
+- case1:
+    run: ./fibonacci
+    script:
+        - expect: "Enter the index of the Fibonacci series\r\n"
+        - send: "1"
+        - expect: "0"
+    exit: 0
+    points: 10
+    
+- case2:
+    run: ./fibonacci
+    script:
+        - expect: "Enter the index of the Fibonacci series\r\n"
+        - send: "2"
+        - expect: "1"
+    exit: 0
+    points: 10
+
+- case3:
+    run: ./fibonacci
+    script:
+        - expect: "Enter the index of the Fibonacci series\r\n"
+        - send: "3"
+        - expect: "1"
+    exit: 0
+    points: 10
+    
+- case4:
+    run: ./fibonacci
+    script:
+        - expect: "Enter the index of the Fibonacci series\r\n"
+        - send: "4"
+        - expect: "2"
+    exit: 0
+    points: 10
+    
+- case5:
+    run: ./fibonacci
+    script:
+        - expect: "Enter the index of the Fibonacci series\r\n"
+        - send: "12"
+        - expect: "89"
+    exit: 0
+    points: 10
+    
+- case6:
+    run: ./fibonacci
+    script:
+        - expect: "Enter the index of the Fibonacci series\r\n"
+        - send: "40"
+        - expect: "63245986"
+    exit: 0
+    points: 10

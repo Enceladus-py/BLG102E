@@ -1,0 +1,106 @@
+- init:
+    run: rm -f array_mani
+    blocker: true
+
+- build:
+    run: gcc -std=c99 -Wall -Werror array_mani.c -o array_mani
+    exit: 0
+    points: 10
+    blocker: true
+
+- case1:
+    run: ./array_mani
+    script:
+        - send: "5 3"
+        - send: "1 2 100"
+        - send: "3 4 100"
+        - send: "2 5 100"
+        - expect: "200"
+    exit: 0
+    points: 10
+
+- case2:
+    run: ./array_mani
+    script:
+        - send: "4 3"
+        - send: "2 3 603"
+        - send: "1 1 286"
+        - send: "3 4 882"
+        - expect: "882"
+    exit: 0
+    points: 10
+
+- case3:
+    run: ./array_mani
+    script:
+        - send: "40 30"
+        - send: "29 40 787"
+        - send: "9 26 219"
+        - send: "21 31 214"
+        - send: "8 22 719"
+        - send: "15 23 102"
+        - send: "11 24 83"
+        - send: "14 22 321"
+        - send: "5 22 300"
+        - send: "11 30 832"
+        - send: "5 25 29"
+        - send: "16 24 577"
+        - send: "3 10 905"
+        - send: "15 22 335"
+        - send: "29 35 254"
+        - send: "9 20 20"
+        - send: "33 34 351"
+        - send: "30 38 564"
+        - send: "11 31 969"
+        - send: "3 32 11"
+        - send: "29 35 267"
+        - send: "4 24 531"
+        - send: "1 38 892"
+        - send: "12 18 825"
+        - send: "25 32 99"
+        - send: "3 39 107"
+        - send: "12 37 131"
+        - send: "3 26 640"
+        - send: "8 39 483"
+        - send: "8 11 194"
+        - send: "12 37 502"
+        - expect: "8628"
+    exit: 0
+    points: 10
+
+- case4:
+    run: ./array_mani
+    script:
+        - send: "40 30"
+        - send: "19 28 419"
+        - send: "4 23 680"
+        - send: "5 6 907"
+        - send: "19 33 582"
+        - send: "5 9 880"
+        - send: "10 13 438"
+        - send: "21 39 294"
+        - send: "13 18 678"
+        - send: "12 26 528"
+        - send: "15 30 261"
+        - send: "8 9 48"
+        - send: "21 23 131"
+        - send: "20 21 7"
+        - send: "13 40 65"
+        - send: "13 23 901"
+        - send: "15 15 914"
+        - send: "14 35 704"
+        - send: "20 39 522"
+        - send: "10 18 379"
+        - send: "16 27 8"
+        - send: "25 40 536"
+        - send: "5 9 190"
+        - send: "17 20 809"
+        - send: "8 20 453"
+        - send: "22 37 298"
+        - send: "19 37 112"
+        - send: "2 5 186"
+        - send: "21 29 184"
+        - send: "23 30 625"
+        - send: "2 8 960" 
+    exit: 0
+    points: 10
